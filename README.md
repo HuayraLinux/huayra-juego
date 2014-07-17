@@ -1,4 +1,6 @@
 huayra-juego
 ============
 
-Juego de una vaca voladora
+Juego de una vaca voladora:
+
+![](preview/preview.png)
