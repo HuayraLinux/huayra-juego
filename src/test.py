@@ -25,6 +25,12 @@ class Salta(Estado):
     def actualizar(self):
         pass
 
+class Capa(pilasengine.actores.Actor):
+
+    def iniciar(self):
+        self.imagen = "fondo/fondo.png"
+        self.imagen.repetir_horizontal= True
+
 class Vaca(pilasengine.actores.Actor):
 
     def iniciar(self):
@@ -55,6 +61,9 @@ class Vaca(pilasengine.actores.Actor):
     def actualizar(self):
         self.estado.actualizar()
 
+capa = Capa(pilas)
 vaca = Vaca(pilas)
+capa.x = [-4000], 10
+
 
 pilas.ejecutar()
