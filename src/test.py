@@ -60,13 +60,14 @@ class SaltoVuela(Estado):
 
     def iniciar(self):
         self.receptor.cambiar_animacion('salto', 'curso')
-        self.vy = 20
+        self.vy = 10
         self.y_suelo = self.receptor.y
 
     def actualizar(self):
         self.receptor.imagen.avanzar()
 
         self.vy -= 0.5
+        self.receptor.rotacion = self.vy * 2
         self.receptor.y += self.vy
 
         if self.receptor.y < self.y_suelo:
@@ -79,6 +80,7 @@ class SaltoCae(Estado):
 
     def iniciar(self):
         self.receptor.cambiar_animacion('salto', 'fin')
+        self.receptor.rotacion = 0
 
     def actualizar(self):
         continua = self.receptor.imagen.avanzar()
@@ -107,7 +109,7 @@ class Vaca(pilasengine.actores.Actor):
     def iniciar(self):
         self.animaciones = {}
 
-        self.animaciones["camina"] = self.pilas.imagenes.cargar_animacion('animacion.png', 10)
+        self.animaciones["camina"] = self.pilas.imagenes.cargar_animacion('animacion_nueva.png', 12)
         self.animaciones['camina'].definir_animacion('corre', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 24)
         self.animaciones['camina'].cargar_animacion('corre')
 
@@ -115,7 +117,7 @@ class Vaca(pilasengine.actores.Actor):
 
         self.animaciones['salto'].definir_animacion('comienzo', [0, 1, 2, 3, 4, 5], 50)
         self.animaciones['salto'].definir_animacion('curso', [6, 7, 8, 9, 8, 7], 24)
-        self.animaciones['salto'].definir_animacion('fin', [10, 11, 12, 13, 14, 15, 16, 17, 18, 19], 50)
+        self.animaciones['salto'].definir_animacion('fin', [13, 14, 15, 16, 17, 18, 19], 50)
 
         self.definir_estado(Correr(self))
         print pilas.pad.listar()
