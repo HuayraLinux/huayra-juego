@@ -1,6 +1,6 @@
 import pilasengine
 
-pilas = pilasengine.iniciar(800, 600, capturar_errores=False)
+pilas = pilasengine.iniciar(1366, 768, capturar_errores=False)
 
 class Estado(object):
 
