@@ -104,6 +104,24 @@ class Capa(pilasengine.actores.Actor):
     def actualizar(self):
         self.x -= self.velocidad
 
+class ObjetoFondo(pilasengine.actores.Actor):
+
+    def iniciar(self):
+        self.velocidad = 0
+        self.x = 800 + 100 * pilas.azar(0, 2)
+        self.y = -100
+
+    def definir_propiedades(self, imagen, velocidad, z):
+        self.imagen = imagen
+        self.velocidad = velocidad * 10
+        self.z = z
+
+    def actualizar(self):
+        self.x -= self.velocidad
+
+        if self.x < -800:
+            self.eliminar()
+
 class Vaca(pilasengine.actores.Actor):
 
     def iniciar(self):
@@ -138,6 +156,10 @@ fondos = True
 
 if fondos:
     capa_gradiente = Capa(pilas)
+    capa_gradiente.definir_propiedades("fondos/fondo_pampa.png", 0.9, 1)
+
+    """
+    capa_gradiente = Capa(pilas)
     capa_gradiente.definir_propiedades("fondo/Gradient.png", 0.1, 1)
 
     capa_cielo = Capa(pilas)
@@ -155,6 +177,22 @@ if fondos:
     capa_bg2 = Capa(pilas)
     capa_bg2.definir_propiedades("fondo/bg2.png", 0.5, 1)
     capa_bg2.y = -19
+    """
+
+
+def crear_arbusto_o_arbol():
+    obj = ObjetoFondo(pilas)
+    imagenes = [
+                "fondos/alagarrobo1.png",
+                "fondos/alagarrobo2.png",
+                "fondos/arbusto1.png",
+                ]
+    azar = pilas.azar(0, 2)
+    obj.definir_propiedades(imagenes[azar], 0.9, 1)
+
+if fondos:
+    pilas.tareas.siempre(2, crear_arbusto_o_arbol)
+
 
 
 vaca = Vaca(pilas)
