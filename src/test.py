@@ -109,7 +109,7 @@ class ObjetoFondo(pilasengine.actores.Actor):
     def iniciar(self):
         self.velocidad = 0
         self.x = 800 + 100 * pilas.azar(0, 2)
-        self.y = -100
+        self.y = 0
 
     def definir_propiedades(self, imagen, velocidad, z):
         self.imagen = imagen
@@ -155,13 +155,22 @@ fondos = True
 
 
 if fondos:
+
     capa_gradiente = Capa(pilas)
     capa_gradiente.definir_propiedades("fondos/fondo_pampa.png", 0.9, 1)
 
-    """
-    capa_gradiente = Capa(pilas)
-    capa_gradiente.definir_propiedades("fondo/Gradient.png", 0.1, 1)
 
+    capa_gradiente = Capa(pilas)
+    capa_gradiente.definir_propiedades("fondos/arboleda3_capafondo.png", 0.05, 1)
+
+    capa_gradiente = Capa(pilas)
+    capa_gradiente.definir_propiedades("fondos/capa_medio.png", 0.2, 1)
+
+
+    capa_gradiente = Capa(pilas)
+    capa_gradiente.definir_propiedades("fondos/arbol_pp.png", 2, 1)
+
+    """
     capa_cielo = Capa(pilas)
     capa_cielo.definir_propiedades("fondo/cielo.png", 0.2, 1)
     capa_cielo.y = 89
@@ -183,11 +192,14 @@ if fondos:
 def crear_arbusto_o_arbol():
     obj = ObjetoFondo(pilas)
     imagenes = [
-                "fondos/alagarrobo1.png",
-                "fondos/alagarrobo2.png",
+                "fondos/algarrobo1.png",
+                "fondos/algarrobo2.png",
+                "fondos/eucalipto.png",
+                "fondos/eucalipto2.png",
                 "fondos/arbusto1.png",
+                "fondos/arroyo.png",
                 ]
-    azar = pilas.azar(0, 2)
+    azar = pilas.azar(0, len(imagenes))
     obj.definir_propiedades(imagenes[azar], 0.9, 1)
 
 if fondos:
