@@ -2,11 +2,13 @@ import os
 
 import pilasengine
 import actores
+import os
+
 
 class EscenaJuego(pilasengine.escenas.Escena):
 
     def iniciar(self):
-        prefijo = 'fondos/pampa'
+        prefijo = os.path.join(os.path.dirname(__file__), "../../data/fondos/pampa")
         self._crear_fondo(prefijo)
         self._crear_al_actor_vaca()
         self.__crear_plano_frontal(prefijo)
@@ -37,7 +39,7 @@ class EscenaJuego(pilasengine.escenas.Escena):
         ruta_cielo = os.path.join(prefijo, 'cielo')
         imagen_cielo = os.path.join(ruta_cielo, "cielo.png")
         capa = actores.capa.Capa(self.pilas)
-        capa.definir_propiedades(imagen_cielo, 0.1, 1)
+        capa.definir_propiedades(imagen_cielo, 0.01, 1)
 
         objetos_cielo = self._obtener_archivos(ruta_cielo)
         objetos_cielo.remove('cielo.png')
@@ -46,7 +48,7 @@ class EscenaJuego(pilasengine.escenas.Escena):
             obj = actores.objeto_fondo.ObjetoFondo(self.pilas)
             x = self.pilas.azar(-678, 678)
             y = self.pilas.azar(100, 378)
-            obj.definir_propiedades(os.path.join(ruta_cielo, objeto), 0.15, z=1, x=x, y=y)
+            obj.definir_propiedades(os.path.join(ruta_cielo, objeto), 0.05, z=1, x=x, y=y)
 
     def __crear_fondo_suelo(self, prefijo):
         ruta_suelo = os.path.join(prefijo, 'suelo')
