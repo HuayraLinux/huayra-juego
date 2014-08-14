@@ -14,9 +14,10 @@ class ObjetoFondo(pilasengine.actores.Actor):
         self.z = z
         self.x = x
         self.y = y
+        self.x_inicial = x
 
     def actualizar(self):
         self.x -= self.velocidad
 
         if self.derecha < -700:
-            self.izquierda = self.pilas.azar(700, 800)
+            self.izquierda = self.x_inicial + 800 * 2
