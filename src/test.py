@@ -9,37 +9,7 @@ escena = escenas.EscenaJuego(pilas)
 pilas.definir_escena(escena)
 
 
-class Capa(pilasengine.actores.Actor):
 
-    def iniciar(self):
-        self.velocidad = 0
-
-    def definir_propiedades(self, imagen, velocidad, z):
-        self.imagen = imagen
-        self.imagen.repetir_horizontal = True
-        self.velocidad = velocidad * 10
-        self.z = z
-
-    def actualizar(self):
-        self.x -= self.velocidad
-
-class ObjetoFondo(pilasengine.actores.Actor):
-
-    def iniciar(self):
-        self.velocidad = 0
-        self.x = 800 + 100 * pilas.azar(0, 2)
-        self.y = 0
-
-    def definir_propiedades(self, imagen, velocidad, z):
-        self.imagen = imagen
-        self.velocidad = velocidad * 10
-        self.z = z
-
-    def actualizar(self):
-        self.x -= self.velocidad
-
-        if self.x < -800:
-            self.eliminar()
 
 
 

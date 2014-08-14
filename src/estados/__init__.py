@@ -1,5 +1,8 @@
 import pilasengine
 
+LIMITE_IZQUIERDA = -640
+LIMITE_DERECHA = 600
+
 class Estado(object):
 
     def __init__(self, receptor):
@@ -13,7 +16,7 @@ class Estado(object):
         pass
 
     def actualizar_posicion_horizontal(self):
-        velocidad = 8
+        velocidad = 9
 
         if self.receptor.pilas.control.izquierda:
             self.receptor.x -= velocidad
@@ -21,11 +24,11 @@ class Estado(object):
         if self.receptor.pilas.control.derecha:
             self.receptor.x += velocidad
 
-        if self.receptor.x < -420:
-            self.receptor.x = -420
+        if self.receptor.x < LIMITE_IZQUIERDA:
+            self.receptor.x = LIMITE_IZQUIERDA
 
-        if self.receptor.x > 400:
-            self.receptor.x = 400
+        if self.receptor.x > LIMITE_DERECHA:
+            self.receptor.x = LIMITE_DERECHA
 
 class Correr(Estado):
 
